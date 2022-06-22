@@ -4,6 +4,7 @@ SRC_DIR := src
 BUILD_DIR := build
 ENTRIES_LIST := .entries.csv
 
+SORT := sort -r
 # Pandoc basic configuration
 PANDOC := pandoc -s
 PANDOC_FILTERS := 
@@ -52,11 +53,11 @@ $(BUILD_DIR)/blog/%.html: $(SRC_DIR)/blog/%.md $(COMMENT_SECTION)
         -i $< -o $@
 
 $(BUILD_DIR)/blog/index.html: $(SRC_DIR)/blog/index.md $(ENTRIES_LIST)
-	cat $(ENTRIES_LIST) | sort | ./scripts/entries2rss.py html | \
+	cat $(ENTRIES_LIST) | $(SORT) | ./scripts/entries2rss.py html | \
 		$(PANDOC_COMMAND) -i $< -i - -o $@
 
 $(BUILD_DIR)/blog/rss.xml: $(ENTRIES_LIST)
-	cat $(ENTRIES_LIST) | sort | ./scripts/entries2rss.py > $@
+	cat $(ENTRIES_LIST) | $(SORT) | ./scripts/entries2rss.py > $@
 
 $(BUILD_DIR)/%.html: $(SRC_DIR)/%.md
 	mkdir -p $(shell dirname $@)
