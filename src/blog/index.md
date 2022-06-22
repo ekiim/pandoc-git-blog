@@ -1,0 +1,6 @@
+# Blog index
+
+Welcome!
+
+---
+

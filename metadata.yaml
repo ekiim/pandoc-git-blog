@@ -1,0 +1,11 @@
+title: Personal Site
+subtitle: Foo Bar
+global_links:
+  - name: Index
+    uri: /
+  - name: Contact
+    uri: /contact.html
+  - name: Blog
+    uri: /blog
+feed_list_path: .entries.csv
+base_url: http://localhost:8000
